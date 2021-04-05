@@ -1,0 +1,59 @@
+<div>
+  <app-header></app-header>
+</div>
+<div class="container">
+  <h3 align="center">Details of The Course</h3>
+  <table class="table" *ngFor="let course of courses ">
+    <tr>
+      <td class="tb12"><strong>Course Name</strong></td>
+      <td class="tb12"> {{course.Course_Name }}</td>
+    </tr>
+    <tr>
+      <td class="tb12"><strong>Course Id</strong></td>
+      <td class="tb12">{{course.Course_Id }}</td>
+    </tr>
+    <tr>
+      <td class="tb12"><strong>Course Description</strong></td>
+      <td class="tb12">{{course.Course_Description}}</td>
+    </tr>
+    <tr>
+      <td class="tb12"><strong>Course Start Date</strong> </td>
+      <td class="tb12">The Course start date will be one month from the date of enrollment</td>
+    </tr>
+    <tr>
+      <td class="tb12"><strong>Course Author</strong> </td>
+      <td class="tb12">{{course.Course_Author}}</td>
+    </tr>
+    <tr>
+    <tr>
+      <td class="tb12"><strong>Course Duration</strong> </td>
+      <td class="tb12">{{course.Course_Duration}}</td>
+    </tr>
+    <tr>
+      <td class="tb12"><strong>Course Difficulty</strong> </td>
+      <td class="tb12">{{course.Course_Difficulty}}</td>
+    </tr>
+
+    <!-- <tr>
+      <td class="tb12"><strong>Credit score</strong> </td>
+      <td class="tb12">{{course.credit_score}}</td>
+    </tr> -->
+    <tr>
+      <td class="tb12"><strong>Credit score</strong> </td>
+      <td class="tb12">{{course.credits}}</td>
+    </tr>
+
+    <a routerLink="/login" *ngIf="!isUserLoggedIn"><button class="btn btn-info">Enroll</button></a>
+
+
+
+    <div *ngFor="let user of users ">
+      <p mat-line><a *ngIf="isUserLoggedIn"><button class="btn btn-info"
+            (click)="onenroll(user.User_Id,user.UserName,course.Course_Id,course.credits)">Enroll</button></a></p>
+    </div>
+    
+  </table>
+
+
+
+</div>

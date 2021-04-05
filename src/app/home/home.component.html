@@ -1,0 +1,46 @@
+<div>
+  <app-header></app-header>
+</div>
+
+<body class="background">
+    
+ 
+<strong>Search Course</strong>
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search By Name"
+          style="width:300px" [(ngModel)]="searchValue" /> 
+</div>
+<div class="container" >
+<div class="row">
+<div class="col-md-4" *ngFor="let course of courses | courselist:searchValue">
+  <div  class="item-box-blog" >
+      <div class="item-box-blog-body">
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+          <div class="card-header" style="background-color: gray">
+              <strong>{{course.Course_Name }}</strong></div>
+              <div class="card-body text-dark">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Course Id:
+                  </strong>{{course.Course_Id }}</li>
+                <li class="list-group-item"><strong>Description:
+                  </strong>{{course.Course_Description}}</li>
+                 <br>
+
+                
+                  <a [routerLink]="[ '/viewdetail', course.Course_Id ]">
+                      <button class="btn btn-danger px-4">View details</button></a>
+                </ul>
+            </div>
+                    </div>
+      </div>
+    </div>
+    <!-- <div *ngIf="!searchValue">
+      <p><strong>No Courses Match the Keyword</strong></p>
+    </div> -->
+    
+</div>
+</div>
+</div>
+</body>
+
+

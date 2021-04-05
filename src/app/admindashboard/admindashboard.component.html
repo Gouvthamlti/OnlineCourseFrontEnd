@@ -1,0 +1,110 @@
+<app-adminheader></app-adminheader>
+
+    
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true"><strong>Dashboard</strong></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false"><strong>Manage Courses</strong></a>
+    </li>
+</ul>
+<body class="background">
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <!-- Admin dashboard starts -->
+        
+       
+<h3 align="center">Registerd Users</h3> 
+        <table class="table" >  
+            <tr >  
+                <th class="tb12">User Id</th>
+                <th class="tbl2">User Name</th>  
+                <th class="tbl2">Name</th>  
+                <th class="tbl2">Mobile Number</th> 
+                <th class="tbl2">Email</th>  
+                <th class="tbl2">Age</th>
+                <th class="tbl2">Assign Course</th>
+            </tr>  
+            
+            <tbody>
+                <tr *ngFor="let user of users">  
+                    <td class="tb12">{{user.User_Id}}</td>
+                    <td class="tbl2">{{user.UserName}}</td>  
+                    <td class="tbl2">{{user.Name}}</td>  
+                    <td class="tbl2">{{user.Mobile_Number}}</td>  
+                    <td class="tbl2">{{user.Email}}</td>  
+                    <td class="tbl2">{{user.Age}}</td>  
+                       
+                    <td class="tbl2"><a [routerLink]="[ '/assigncourse', user.User_Id,user.UserName ]">
+                        <button class="btn btn-info px-4">Assign Course</button></a></td>   
+                </tr>  
+            </tbody>      
+        </table>
+        <!-- Dashboard ends -->
+
+    </div><br><br>
+    <!-- Manage courses starts -->
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+       
+
+        <body class="background">
+
+
+            <!-- <strong>Search Course</strong>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search By Name"
+                    style="width:300px" [(ngModel)]="searchValue" /> 
+    </div> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let course of courses">
+                <div class="item-box-blog">
+                    <div class="item-box-blog-body">
+                        <div class="card border-dark mb-3" style="max-width: 18rem;">
+                            <div class="card-header" style="background-color: gray">
+                                <strong>{{course.Course_Name }}</strong>
+                            </div>
+                            <div class="card-body text-dark">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>Course Id:
+                                        </strong>{{course.Course_Id }}</li>
+                                    <li class="list-group-item"><strong>Description:
+                                        </strong>{{course.Course_Description}}</li>
+                                    <br>
+                                    <div class="row">
+                                        <a [routerLink]="[ '/editcourse', course.Course_Id ]">
+                                            <button class="btn btn-info px-4">Edit</button></a>&nbsp;
+                                            <a class="btn btn-danger"(click)="CourseDelete(course.Course_Id)">Delete</a>
+                                    </div>
+                                       
+                                          
+                                                <!-- <button class="btn btn-danger " (click)="OnDelete(course.Course_Id)">Delete</button> -->
+                                          
+                                           
+                                   
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="!searchValue">
+                <p><strong>No Courses Match the Keyword</strong></p>
+              </div> -->
+
+            </div>
+        </div>
+    </div>
+    </body>
+
+
+
+</div>
+<!-- Manage Course tab ends -->
+</div>
+</body>

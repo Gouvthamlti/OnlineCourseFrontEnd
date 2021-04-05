@@ -1,0 +1,83 @@
+
+<div><app-header></app-header></div><br>
+
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true"><strong>Dashboard</strong></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false"><strong>Courses Assigned</strong></a>
+    </li>
+</ul>
+<div *ngIf="totals" >
+    <strong>Total Credits :</strong>
+    {{totals}}
+</div>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h3 align="center">All Courses Enrolled</h3> 
+        <table class="table" >  
+            <tr >  
+                <th class="tb12">Enrollment Id</th>
+                <th class="tbl2">Course Id</th>  
+                <th class="tbl2">Course Enrollment Date</th>  
+                <th class="tbl2">Course Start Date</th> 
+                <th class="tbl2">Course Completion Date</th>  
+                <th class="tbl2">Cancel Course</th>
+                <th class="tbl2">Complete Course</th>
+            </tr>  
+            
+            <tbody>
+                <tr *ngFor="let detail of details">  
+                    <td class="tb12">{{detail.Enroll_id}}</td>
+                    <td class="tbl2">{{detail.Course_Id}}</td>  
+                    <td class="tbl2">{{detail.Course_Enrolleddate | date}}</td>  
+                    <td class="tbl2">{{detail.Course_StartDtae | date}}</td>  
+                    <td class="tbl2">{{detail.Course_CompletionDate | date}}</td>  
+                       
+                    <td class="tbl2"><button class="btn btn-danger" (click)="onCancel(detail.Enroll_id)" >Cancel</button></td> 
+                    <td class="tbl2"><button class="btn btn-success" (click)="onComplete(detail.Enroll_id)" >Complete</button></td>   
+                </tr>  
+            </tbody>      
+        </table>
+
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <h3 align="center">All Courses Assigned</h3> 
+        <table class="table" >  
+            <tr >  
+                <th class="tb12">Assigned Id</th>
+                <th class="tbl2">User Id</th>  
+                <th class="tbl2">Course Id</th>  
+                <th class="tbl2">Course Assigned Date</th>
+                <th class="tbl2">Course Start Date</th>
+                <th class="tbl2">Course Completion Date</th>  
+                <th class="tbl2">Admin Name</th>
+                <th class="tbl2">Credit Score</th>
+                <th class="tbl2">Already Enrolled</th>
+                <th class="tbl2">Completed</th>
+            </tr>  
+           
+
+            <tbody>
+                <tr *ngFor="let assign of assigns">  
+                    <td class="tb12">{{assign.Assigned_id}}</td>
+                    <td class="tb12">{{assign.User_Id}}</td> 
+                    <td class="tb12">{{assign.Course_Id}}</td>
+                    <td class="tb12">{{assign.Course_AssignedDate | date}}</td>
+                    <td class="tb12">{{assign.Course_StartDate | date}}</td>
+                    <td class="tb12">{{assign.Course_CompletionDate | date}}</td>
+                    <td class="tb12">{{assign.AdminName}}</td>
+                    <td class="tb12">{{assign.credits}}</td>
+                     <td class="tbl2"><button class="btn btn-info" (click)="onEnroll(assign.Assigned_id)" >Enrolled</button></td> 
+                    <td class="tbl2"><button class="btn btn-success" (click)="onCompletedStatus(assign.Assigned_id)" >Complete</button></td>    
+                </tr>  
+            </tbody>      
+        </table>
+</div>
+
+</div>

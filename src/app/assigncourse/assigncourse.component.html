@@ -1,0 +1,38 @@
+<app-adminheader></app-adminheader>
+<h3 align="center">All Courses Available</h3>
+<div class="container">
+
+    <div *ngFor="let user of users">
+        <h1><strong>User Name:</strong>{{user.Name}}</h1>
+    </div>
+    <table class="table">
+        <tr>
+            <th class="tb12">Course Id</th>
+            <th class="tbl2">Course Name</th>
+            <th class="tbl2">Course Description</th>
+            <th class="tbl2">Course Author</th>
+            <th class="tbl2">Course Duration</th>
+            <th class="tbl2">Course Difficulty</th>
+            <th class="tbl2">Course Credit Score</th>
+            <th class="tbl2">Assign Course</th>
+        </tr>
+
+        <tbody>
+            <tr *ngFor="let course of courses">
+                <td class="tb12">{{course.Course_Id}}</td>
+                <td class="tbl2">{{course.Course_Name}}</td>
+                <td class="tbl2">{{course.Course_Description}}</td>
+                <td class="tbl2">{{course.Course_Author}}</td>
+                <td class="tbl2">{{course.Course_Duration}}</td>
+                <td class="tbl2">{{course.Course_Difficulty}}</td>
+                <td class="tbl2">{{course.credits}}</td>
+                <div *ngFor="let user of users">
+                    <td class="tbl2"><button class="btn btn-info"
+                            (click)="onassign(user.UserName,user.User_Id,course.Course_Id,course.credits)">Assign</button>
+                    </td>
+                </div>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
